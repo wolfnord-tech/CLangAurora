@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=pro.wolfnord.CNew
+Exec=/usr/bin/pro.wolfnord.CNew
+Name=C Language
+Name[ru]=Язык C
+
+[X-Application]
+Permissions=
+OrganizationName=pro.wolfnord
+ApplicationName=CNew
+ExecDBus=/usr/bin/pro.wolfnord.CNew
