@@ -14,16 +14,16 @@ Page {
                 objectName: "aboutButton"
                 icon.source: "image://theme/icon-m-about"
                 anchors.verticalCenter: parent.verticalCenter
-
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
             }
         ]
     }
+
     Item {
         id: root
         objectName: "Counter"
-
         property real fontSize: width / 16
+        anchors.fill: parent
 
         Counter {
             id: counterObj
@@ -33,25 +33,27 @@ Page {
 
         Column {
             objectName: "layout"
-            width: parent.width
+            anchors.fill: parent  // Задает размеры на весь родительский элемент
 
             Text {
                 id: valueText
                 objectName: "valueText"
                 text: "Value: %1".arg(counterObj.value)
-                height: root.height / 3
-                verticalAlignment: Text.AlignVCenter
                 font.pixelSize: fontSize
                 anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: parent.top
+                anchors.topMargin: 20  // Хотя бы отступ сверху
             }
 
             Row {
                 objectName: "buttonsRow"
-                height: root.height - valueText.height
+                height: root.height - valueText.height - 20  // Учитываем отступ
+                anchors.top: valueText.bottom // Привязка к предыдущему элементу
 
                 MouseArea {
                     width: root.width / 2
                     height: parent.height
+                    anchors.verticalCenter: parent.verticalCenter
 
                     Text {
                         text: "Increment"
@@ -65,6 +67,7 @@ Page {
                 MouseArea {
                     width: root.width / 2
                     height: parent.height
+                    anchors.verticalCenter: parent.verticalCenter
 
                     Text {
                         text: "Reset"
